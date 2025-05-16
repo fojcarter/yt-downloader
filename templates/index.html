@@ -1,36 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
     <title>YouTube Downloader</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+        input, select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .notice {
+            font-size: 0.9em;
+            color: gray;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body style="font-family:sans-serif; text-align:center; margin-top:50px;">
-    <h1>🎬 YouTube Downloader</h1>
+<body>
+    <h1>🎥 YouTube Downloader</h1>
+
     <form method="POST">
-        <input type="text" name="url" placeholder="유튜브 URL 입력" style="width: 80%; padding: 10px;"><br><br>
+        <input type="text" name="url" placeholder="유튜브 영상 URL 입력" required><br>
 
-        <label><strong>화질 선택:</strong></label><br>
-        <select name="quality" style="padding: 5px;">
-            <option value="auto">자동</option>
+        <label for="resolution">화질 선택:</label>
+        <select name="resolution">
+            <option value="best">자동</option>
+            <option value="1080p">1080p</option>
             <option value="4k">4K</option>
-            <option value="1440p">2K (1440p)</option>
-            <option value="1080p">Full HD (1080p)</option>
-            <option value="720p">HD (720p)</option>
-            <option value="480p">SD (480p)</option>
-            <option value="audio">오디오만</option>
-        </select><br><br>
+        </select><br>
 
-        <label><input type="checkbox" name="subtitles"> 자막 포함 (한/영)</label><br><br>
+        <label>
+            <input type="checkbox" name="subtitles" value="true">
+            자막 포함 (한/영)
+        </label><br>
 
-        <button type="submit" style="padding:10px 20px;">다운로드</button>
+        <div class="notice">
+            ⓘ CC 라이선스 영상만 다운로드해주세요.  
+            재업로드 시 유튜브 중복 콘텐츠 정책을 꼭 확인하세요.
+        </div>
+
+        <button type="submit">📥 다운로드</button>
     </form>
 
     {% if message %}
-    <p style="margin-top:20px;">{{ message }}</p>
-    {% endif %}
-
-    {% if video_file %}
-    <a href="/downloads/{{ video_file }}" download>📥 영상 저장하기</a>
+        <p style="margin-top: 20px; font-size: 18px;">{{ message }}</p>
     {% endif %}
 </body>
 </html>
