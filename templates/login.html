@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>🔐 로그인</title>
+</head>
+<body style="text-align:center; padding-top:50px;">
+    <h2>🔒 비밀번호 입력</h2>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <button type="submit">접속</button>
+    </form>
+</body>
+</html>

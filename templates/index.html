@@ -3,52 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>YouTube Downloader</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            text-align: center;
-            padding: 30px;
-        }
-        input, select, button {
-            padding: 10px;
-            font-size: 16px;
-            margin: 5px;
-        }
-        .notice {
-            font-size: 0.9em;
-            color: gray;
-            margin-top: 10px;
-        }
-    </style>
 </head>
-<body>
-    <h1>🎥 YouTube Downloader</h1>
+<body style="text-align:center; font-family:sans-serif; padding:30px;">
+    <h1>🎬 YouTube Downloader</h1>
 
     <form method="POST">
-        <input type="text" name="url" placeholder="유튜브 영상 URL 입력" required><br>
+        <input type="text" name="url" placeholder="유튜브 URL 입력" required><br><br>
 
-        <label for="resolution">화질 선택:</label>
-        <select name="resolution">
-            <option value="best">자동</option>
+        <label>화질 선택:</label>
+        <select name="quality">
+            <option value="auto">자동</option>
             <option value="1080p">1080p</option>
             <option value="4k">4K</option>
-        </select><br>
+        </select><br><br>
 
         <label>
             <input type="checkbox" name="subtitles" value="true">
             자막 포함 (한/영)
-        </label><br>
+        </label><br><br>
 
-        <div class="notice">
-            ⓘ CC 라이선스 영상만 다운로드해주세요.  
-            재업로드 시 유튜브 중복 콘텐츠 정책을 꼭 확인하세요.
-        </div>
+        <p style="color: gray; font-size: 0.9em;">
+            ⓘ CC 라이선스 영상만 다운로드하세요.  
+            재업로드 시 유튜브 정책에 주의하세요.
+        </p>
 
-        <button type="submit">📥 다운로드</button>
+        <button type="submit">📥 다운로드 시작</button>
     </form>
 
     {% if message %}
-        <p style="margin-top: 20px; font-size: 18px;">{{ message }}</p>
+        <p style="margin-top:20px; font-size:18px;">{{ message }}</p>
     {% endif %}
+
+    <p><a href="/logout">로그아웃</a></p>
 </body>
 </html>
